@@ -1,0 +1,23 @@
+<h1>Blogsito UwU</h1>
+<%= link_to 'My Blog', controller: 'articles'%>
+
+<%= link_to 'New article', new_article_path %>
+<table>
+  <tr>
+    <th>Titulo</th>
+    <th>Texto</th>
+    <th></th>
+  </tr>
+
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Mostrar', article_path(article) %></td>
+      <td><%= link_to 'Editar', edit_article_path(article) %></td>
+      <td><%= link_to 'Eliminar', article_path(article),
+              method: :delete,
+              data: { confirm: 'Tas seguro bro ?' } %></td>
+    </tr>
+  <% end %>
+</table>
